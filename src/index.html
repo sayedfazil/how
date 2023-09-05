@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/dist/output.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>new project</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <style>
+    @media (max-width: 768px) {
+      .flex-wrap {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .section-small {
+        width: 50%;
+      }
+    }
+  </style>
+  </head>
+
+  <body>
+    <div class="flex flex-col h-screen bg-gray-100">
+      <div class="flex items-center justify-between w-full p-2 text-white bg-white shadow">
+        <div class="flex items-center">
+          <div class="items-center hidden md:flex">
+            <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="mr-2 w-28 h-18">
+            <h2 class="text-xl font-bold">Nombre de la Aplicación</h2>
+          </div>
+          <div class="flex items-center md:hidden">
+            <button id="menuBtn">
+              <i class="text-lg text-gray-500 fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-x-5">
+          <button>
+            <i class="text-lg text-gray-500 fas fa-bell"></i>
+          </button>
+          <button>
+            <i class="text-lg text-gray-500 fas fa-user"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-1">
+        <div class="flex flex-col hidden p-2 bg-white w-60 md:flex" id="sideNav">
+          <nav>
+            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
+              href="#">
+              <i class="mr-2 fas fa-home"></i>Inicio
+            </a>
+            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
+              href="#">
+              <i class="mr-2 fas fa-file-alt"></i>Autorizaciones
+            </a>
+            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
+              href="#">
+              <i class="mr-2 fas fa-users"></i>Usuarios
+            </a>
+            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
+              href="#">
+              <i class="mr-2 fas fa-store"></i>Comercios
+            </a>
+            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
+              href="#">
+              <i class="mr-2 fas fa-exchange-alt"></i>Transacciones
+            </a>
+          </nav>
+
+          <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white mt-auto"
+            href="#">
+            <i class="mr-2 fas fa-sign-out-alt"></i>Comercios
+          </a>
+          <div class="h-px mt-2 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
+          <p class="px-5 py-3 mb-1 text-xs text-left text-cyan-500">chack me</p>
+
+        </div>
+        <div class="flex-1 p-4">
+          <div class="relative w-full max-w-md">
+            <div class="absolute inline-flex items-center p-2 top-1 left-2">
+              <i class="text-gray-400 fas fa-search"></i>
+            </div>
+            <input
+              class="w-full h-10 py-1 pl-10 pr-4 text-base placeholder-gray-500 border rounded-full focus:shadow-outline"
+              type="search" placeholder="Search...">
+          </div>
+          <div class="grid grid-cols-1 gap-4 p-2 mt-2 md:grid-cols-2">
+            <div class="p-4 bg-white rounded-md">
+              <h2 class="pb-1 text-lg font-semibold text-gray-500">Usuarios</h2>
+              <div class="my1-"></div>
+              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
+              <div class="chart-container" style="position: relative; height:150px; width:100%">
+
+                <canvas id="usersChart"></canvas>
+              </div>
+            </div>
+            <div class="p-4 bg-white rounded-md">
+              <h2 class="pb-1 text-lg font-semibold text-gray-500">Comercios</h2>
+              <div class="my-1"></div>
+              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
+              <div class="chart-container" style="position: relative; height:150px; width:100%">
+
+                <canvas id="commercesChart"></canvas>
+              </div>
+            </div>
+            <div class="p-4 bg-white rounded-md">
+              <h2 class="pb-4 text-lg font-semibold text-gray-500">chack me</h2>
+              <div class="my-1"></div>
+              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
+              <table class="w-full text-sm table-auto">
+                <thead>
+                  <tr class="text-sm leading-normal">
+                    <th
+                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Foto</th>
+                    <th
+                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Nombre</th>
+                    <th
+                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Rol</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
+                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="mt-4 text-right">
+                <button class="px-4 py-2 font-semibold text-white rounded bg-cyan-500 hover:bg-cyan-600">
+                  chack me
+                </button>
+              </div>
+            </div>
+            <div class="p-4 mt-4 bg-white rounded-md">
+              <h2 class="pb-4 text-lg font-semibold text-gray-500">Transacciones</h2>
+              <div class="my-1"></div>
+              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
+              <table class="w-full text-sm table-auto">
+                <thead>
+                  <tr class="text-sm leading-normal">
+                    <th
+                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Nombre</th>
+                    <th
+                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Fecha</th>
+                    <th
+                      class="px-4 py-2 text-sm font-bold text-right uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
+                      Monto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">27/07/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$1500</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">28/07/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$2000</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">29/07/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$1800</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">30/07/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$2100</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">31/07/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$1700</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">01/08/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$2400</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">02/08/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$1950</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">03/08/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$1850</td>
+                  </tr>
+                  <tr class="hover:bg-grey-lighter">
+                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
+                    <td class="px-4 py-2 border-b border-grey-light">04/08/2023</td>
+                    <td class="px-4 py-2 text-right border-b border-grey-light">$2300</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <div class="mt-4 text-right">
+                <button class="px-4 py-2 font-semibold text-white rounded bg-cyan-500 hover:bg-cyan-600">
+                  chack me
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </body>
+  <script src="java.js"></script>
+
+</html>
