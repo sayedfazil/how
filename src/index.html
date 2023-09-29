@@ -15,249 +15,525 @@
 </head>
 
 <body>
-  <style>
-    @media (max-width: 768px) {
-      .flex-wrap {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .section-small {
-        width: 50%;
-      }
-    }
-  </style>
-  </head>
-
-  <body>
-    <div class="flex flex-col h-screen bg-gray-100">
-      <div class="flex items-center justify-between w-full p-2 text-white bg-white shadow">
-        <div class="flex items-center">
-          <div class="items-center hidden md:flex">
-            <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="mr-2 w-28 h-18">
-            <h2 class="text-xl font-bold">Nombre de la Aplicación</h2>
-          </div>
-          <div class="flex items-center md:hidden">
-            <button id="menuBtn">
-              <i class="text-lg text-gray-500 fas fa-bars"></i>
-            </button>
-          </div>
+  <div
+    class=" hidden sm:hidden md:hidden lg:flex items-center justify-center py-8 bg-[#2ecc71] border-b-[1px] border-solid border-b-green-200 gap-16">
+    <div class="flex">
+      <img
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ1IiBoZWlnaHQ9IjMzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01Ljg2IDI0LjRsLS4wNzUuMTdhNS43MiA1LjcyIDAgMDAwIDQuNDM1IDUuNzkgNS43OSAwIDAwMS4yNzQgMS44OCA1Ljg4NSA1Ljg4NSAwIDAwMS45MDggMS4yNTYgNS45NTUgNS45NTUgMCAwMDQuNSAwIDUuODg1IDUuODg1IDAgMDAxLjkwNy0xLjI1NmwxMC44Mi0xMC42NjFhNS44OCA1Ljg4IDAgMDAxLjc2LTQuMTg5YzAtMS40MS0uNDQzLTIuNzctMS40MTEtMy44MzdhMi42NDcgMi42NDcgMCAwMC0xLjUxNy0uMTdjLS40NTcuMDg0LS44NzYuMzUxLTEuMjI1LjY2NUwxMy41MjIgMjMuMDg4Yy0uMTkuMTk0LS40MS4zNTUtLjY0OC40NzkuMTI2LS4wNzcuMjUtLjE1Ny4zNzMtLjI0bC0uMDMyLjAxMy4wMy0uMDJhMy40MzggMy40MzggMCAwMC0uMDMuMDJBOC42OSA4LjY5IDAgMDE1Ljg2IDI0LjR6IiBmaWxsPSIjMTA0QURFIi8+PHBhdGggZD0iTTEzLjIxNSAyMy4zNGwuMDYyLS4wNDJhMi41ODggMi41ODggMCAwMS0yLjQyNC0uMjcgMi41ODMgMi41ODMgMCAwMS0uNzU3LS44MTcgMi41NDMgMi41NDMgMCAwMS40MDItMy4wODlsMy40MjEtMy40IDQuOTk3LTQuOTI0LjAyLS4wMThhLjkxNC45MTQgMCAwMS4wNDQtLjAzNWwuNzUyLS43NDJhNS44MzUgNS44MzUgMCAwMTEuMTYyLS4xMDdjLjg3OSAwIDEuNjI2LjA4NSAyLjM3MS4yOTdhNS43OTMgNS43OTMgMCAwMTMuMjg4IDIuMDEgMi42NDggMi42NDggMCAwMC0xLjUyNy0uMTc2Yy0uNDU4LjA4NS0uODc3LjM1Mi0xLjIyNi42NjZMMTMuNTIyIDIzLjA4OGMtLjE5MS4xOTQtLjQxLjM1NS0uNjQ5LjQ3OS4xMjYtLjA3Ny4yNS0uMTU3LjM3My0uMjRsLS4wMzEuMDEzeiIgZmlsbD0iIzAwMzhDNyIvPjxwYXRoIGQ9Ik0yMS41MDggMy41NjRhNS4zNTggNS4zNTggMCAwMC0xLjE4My0xLjc0MkE2LjMxMyA2LjMxMyAwIDAwMTguMjguNDc0YTYuMzg5IDYuMzg5IDAgMDAtNC44MyAwIDYuMzE1IDYuMzE1IDAgMDAtMi4wNDcgMS4zNDhsLTguOTA4IDguNzc2QTguMzMxIDguMzMxIDAgMDAwIDE2LjRhOC4zMjQgOC4zMjQgMCAwMDIuMzA3IDUuODc2bC4wOTMuMDg5LjA5Ni4wOThjLjA4OC4wODUuMTguMTY1LjI3Ni4yNGE4LjY2NCA4LjY2NCAwIDAwNS4xNDkgMi4wNjcgOC42OSA4LjY5IDAgMDA1LjM1NS0xLjQ3MiAyLjU4OCAyLjU4OCAwIDAxLTIuNDI0LS4yNyAyLjU4MyAyLjU4MyAwIDAxLS43NTctLjgxNyAyLjU0MyAyLjU0MyAwIDAxLjQwMi0zLjA4OWwzLjQyMS0zLjQgNC45OTctNC45MjQuMDY0LS4wNTMgMS4zNDUtMS4zMjdhNS4zNDMgNS4zNDMgMCAwMDEuNDkzLTIuNzUgNS4yOTUgNS4yOTUgMCAwMC0uMzEtMy4xMDJ2LS4wMDJ6IiBmaWxsPSIjMEY3NUZDIi8+PHBhdGggZD0iTTEwMi40MDMgMjMuNzk1Yy0uODI3IDAtMS41NzUtLjE0Mi0yLjI0NC0uNDI1LS42NTctLjI4NC0xLjE3OS0uNjkyLTEuNTY0LTEuMjI0LS4zODUtLjUzMy0uNTg0LTEuMTYyLS41OTUtMS44ODdoMi41NWMuMDM0LjQ4Ny4yMDQuODcyLjUxIDEuMTU2LjMxNy4yODMuNzQ4LjQyNSAxLjI5Mi40MjUuNTU1IDAgLjk5Mi0uMTMgMS4zMDktLjM5MS4zMTctLjI3Mi40NzYtLjYyNC40NzYtMS4wNTQgMC0uMzUyLS4xMDgtLjY0LS4zMjMtLjg2N2EyLjE1OSAyLjE1OSAwIDAwLS44MTYtLjUyNyAxMS4xMzggMTEuMTM4IDAgMDAtMS4zMjYtLjQ0MmMtLjc3MS0uMjI3LTEuNC0uNDQ4LTEuODg3LS42NjNhMy40OTYgMy40OTYgMCAwMS0xLjI0MS0xLjAwM2MtLjM0LS40NTQtLjUxLTEuMDU0LS41MS0xLjgwMiAwLS43MDMuMTc2LTEuMzE1LjUyNy0xLjgzNi4zNTEtLjUyMi44NDQtLjkxOCAxLjQ3OS0xLjE5LjYzNS0uMjg0IDEuMzYtLjQyNSAyLjE3Ni0uNDI1IDEuMjI0IDAgMi4yMTYuMyAyLjk3NS45Ljc3MS41OSAxLjE5NiAxLjQxNyAxLjI3NSAyLjQ4M2gtMi42MThhMS4zMjQgMS4zMjQgMCAwMC0uNTI3LTEuMDAzYy0uMzE3LS4yNzItLjc0Mi0uNDA4LTEuMjc1LS40MDgtLjQ2NSAwLS44MzkuMTE5LTEuMTIyLjM1Ny0uMjcyLjIzOC0uNDA4LjU4My0uNDA4IDEuMDM3IDAgLjMxNy4xMDIuNTgzLjMwNi43OTkuMjE1LjIwNC40NzYuMzc0Ljc4Mi41MS4zMTcuMTI0Ljc1OS4yNzIgMS4zMjYuNDQyLjc3MS4yMjYgMS40LjQ1MyAxLjg4Ny42OGEzLjM5IDMuMzkgMCAwMTEuMjU4IDEuMDJjLjM1MS40NTMuNTI3IDEuMDQ4LjUyNyAxLjc4NSAwIC42MzQtLjE2NCAxLjIyNC0uNDkzIDEuNzY4LS4zMjkuNTQ0LS44MS45OC0xLjQ0NSAxLjMwOS0uNjM1LjMxNy0xLjM4OC40NzYtMi4yNjEuNDc2em0xOS4zMTgtOS41MzdsLTIuNzU0IDkuNDE4SDExNi40bC0xLjcxNy02LjU4LTEuNzE3IDYuNThoLTIuNTg0bC0yLjc3MS05LjQxOGgyLjQxNGwxLjY2NiA3LjE3NCAxLjgwMi03LjE3NGgyLjUxNmwxLjc2OCA3LjE1NyAxLjY2Ni03LjE1N2gyLjI3OHptLjY3NiA0LjY3NWMwLS45NTIuMTg3LTEuNzk3LjU2MS0yLjUzMy4zODUtLjczNy45MDEtMS4zMDQgMS41NDctMS43YTQuMTYxIDQuMTYxIDAgMDEyLjE5My0uNTk1Yy43MDMgMCAxLjMxNS4xNDEgMS44MzYuNDI1LjUzMy4yODMuOTU4LjY0IDEuMjc1IDEuMDd2LTEuMzQyaDIuMzk3djkuNDE4aC0yLjM5N3YtMS4zNzdjLS4zMDYuNDQyLS43MzEuODEtMS4yNzUgMS4xMDUtLjUzMy4yODMtMS4xNS40MjUtMS44NTMuNDI1YTQuMDQ1IDQuMDQ1IDAgMDEtMi4xNzYtLjYxMmMtLjY0Ni0uNDA4LTEuMTYyLS45OC0xLjU0Ny0xLjcxNy0uMzc0LS43NDgtLjU2MS0xLjYwNC0uNTYxLTIuNTY3em03LjQxMi4wMzRjMC0uNTc4LS4xMTMtMS4wNzEtLjM0LTEuNDhhMi4zMyAyLjMzIDAgMDAtLjkxOC0uOTUxIDIuNDA2IDIuNDA2IDAgMDAtMS4yNDEtLjM0Yy0uNDQyIDAtLjg1LjEwNy0xLjIyNC4zMjNhMi40NyAyLjQ3IDAgMDAtLjkxOC45NTJjLS4yMjcuNDA4LS4zNC44OTUtLjM0IDEuNDYyIDAgLjU2Ni4xMTMgMS4wNjUuMzQgMS40OTYuMjM4LjQxOS41NDQuNzQyLjkxOC45NjkuMzg1LjIyNi43OTMuMzQgMS4yMjQuMzQuNDQyIDAgLjg1Ni0uMTA4IDEuMjQxLS4zMjNhMi40OCAyLjQ4IDAgMDAuOTE4LS45NTJjLjIyNy0uNDIuMzQtLjkxOC4zNC0xLjQ5NnptNy4xMDItMy4zNDljLjMwNi0uNDMxLjcyNS0uNzg4IDEuMjU4LTEuMDcxLjU0NC0uMjk1IDEuMTYxLS40NDIgMS44NTMtLjQ0Mi44MDQgMCAxLjUzLjE5OCAyLjE3Ni41OTUuNjU3LjM5NiAxLjE3My45NjMgMS41NDcgMS43LjM4NS43MjUuNTc4IDEuNTcuNTc4IDIuNTMzIDAgLjk2My0uMTkzIDEuODE5LS41NzggMi41NjctLjM3NC43MzYtLjg5IDEuMzA5LTEuNTQ3IDEuNzE3YTMuOTkxIDMuOTkxIDAgMDEtMi4xNzYuNjEyYy0uNjkyIDAtMS4zMDQtLjE0Mi0xLjgzNi0uNDI1YTMuOTMxIDMuOTMxIDAgMDEtMS4yNzUtMS4wNzF2NS44M2gtMi4zOFYxNC4yNTloMi4zOHYxLjM2em00Ljk4MSAzLjMxNWMwLS41NjctLjExOS0xLjA1NC0uMzU3LTEuNDYyYTIuMzMgMi4zMyAwIDAwLS45MTgtLjk1MiAyLjQxIDIuNDEgMCAwMC0xLjIyNC0uMzIzYy0uNDMxIDAtLjgzOS4xMTMtMS4yMjQuMzRhMi40NyAyLjQ3IDAgMDAtLjkxOC45NTJjLS4yMjcuNDE5LS4zNC45MTItLjM0IDEuNDc5IDAgLjU2Ni4xMTMgMS4wNi4zNCAxLjQ3OS4yMzguNDE5LjU0NC43NDIuOTE4Ljk2OWEyLjQ3IDIuNDcgMCAwMDEuMjI0LjMyM2MuNDQyIDAgLjg1LS4xMTQgMS4yMjQtLjM0LjM4NS0uMjI3LjY5MS0uNTUuOTE4LS45Ny4yMzgtLjQxOS4zNTctLjkxNy4zNTctMS40OTV6TTQyLjI3IDIzLjc5NWMtLjgyNyAwLTEuNTc1LS4xNDItMi4yNDQtLjQyNS0uNjU3LS4yODQtMS4xNzktLjY5Mi0xLjU2NC0xLjIyNC0uMzg1LS41MzMtLjU4NC0xLjE2Mi0uNTk1LTEuODg3aDIuNTVjLjAzNC40ODcuMjA0Ljg3Mi41MSAxLjE1Ni4zMTguMjgzLjc0OC40MjUgMS4yOTIuNDI1LjU1NiAwIC45OTItLjEzIDEuMzEtLjM5MS4zMTYtLjI3Mi40NzUtLjYyNC40NzUtMS4wNTQgMC0uMzUyLS4xMDctLjY0LS4zMjMtLjg2N2EyLjE2MSAyLjE2MSAwIDAwLS44MTYtLjUyN2MtLjMxNy0uMTM2LS43Ni0uMjg0LTEuMzI2LS40NDJhMTUuODggMTUuODggMCAwMS0xLjg4Ny0uNjYzIDMuNDk3IDMuNDk3IDAgMDEtMS4yNC0xLjAwM2MtLjM0LS40NTQtLjUxLTEuMDU0LS41MS0xLjgwMiAwLS43MDMuMTc1LTEuMzE1LjUyNi0xLjgzNi4zNTItLjUyMi44NDUtLjkxOCAxLjQ4LTEuMTkuNjM0LS4yODQgMS4zNi0uNDI1IDIuMTc1LS40MjUgMS4yMjQgMCAyLjIxNi4zIDIuOTc1LjkuNzcuNTkgMS4xOTYgMS40MTcgMS4yNzUgMi40ODNoLTIuNjE4YTEuMzI0IDEuMzI0IDAgMDAtLjUyNy0xLjAwM2MtLjMxNy0uMjcyLS43NDItLjQwOC0xLjI3NS0uNDA4LS40NjQgMC0uODM4LjExOS0xLjEyMi4zNTctLjI3Mi4yMzgtLjQwOC41ODMtLjQwOCAxLjAzNyAwIC4zMTcuMTAyLjU4My4zMDYuNzk5LjIxNS4yMDQuNDc2LjM3NC43ODIuNTEuMzE4LjEyNC43Ni4yNzIgMS4zMjYuNDQyLjc3LjIyNiAxLjQuNDUzIDEuODg3LjY4LjQ4OC4yMjYuOTA3LjU2NiAxLjI1OCAxLjAyLjM1Mi40NTMuNTI3IDEuMDQ4LjUyNyAxLjc4NSAwIC42MzQtLjE2NCAxLjIyNC0uNDkzIDEuNzY4LS4zMjguNTQ0LS44MS45OC0xLjQ0NSAxLjMwOS0uNjM0LjMxNy0xLjM4OC40NzYtMi4yNi40NzZ6bTcuNDctMTAuNjU5Yy0uNDIgMC0uNzcxLS4xMy0xLjA1NC0uMzkxYTEuMzYzIDEuMzYzIDAgMDEtLjQwOC0xLjAwM2MwLS4zOTcuMTM2LS43MjYuNDA4LS45ODZhMS40NjMgMS40NjMgMCAwMTEuMDU0LS40MDhjLjQxOSAwIC43NjUuMTM2IDEuMDM3LjQwOC4yODMuMjYuNDI1LjU4OS40MjUuOTg2IDAgLjM5Ni0uMTQyLjczLS40MjUgMS4wMDMtLjI3Mi4yNi0uNjE4LjM5LTEuMDM3LjM5em0xLjE3MyAxLjEyMnY5LjQxOGgtMi4zOHYtOS40MThoMi4zOHptMTQuMDQ3LS4xMzZjMS4xNTYgMCAyLjA4NS4zNTcgMi43ODggMS4wNy43MTQuNzAzIDEuMDcxIDEuNjkgMS4wNzEgMi45NTl2NS41MjVoLTIuMzh2LTUuMjAyYzAtLjczNy0uMTg3LTEuMjk4LS41NjEtMS42ODMtLjM3NC0uMzk3LS44ODQtLjU5NS0xLjUzLS41OTVzLTEuMTYyLjE5OC0xLjU0Ny41OTVjLS4zNzQuMzg1LS41NjEuOTQ2LS41NjEgMS42ODN2NS4yMDJoLTIuMzh2LTUuMjAyYzAtLjczNy0uMTg3LTEuMjk4LS41NjEtMS42ODMtLjM3NC0uMzk3LS44ODQtLjU5NS0xLjUzLS41OTUtLjY1NyAwLTEuMTc5LjE5OC0xLjU2NC41OTUtLjM3NC4zODUtLjU2MS45NDYtLjU2MSAxLjY4M3Y1LjIwMmgtMi4zOHYtOS40MThoMi4zOHYxLjEzOWEzLjE4MyAzLjE4MyAwIDAxMS4xNzMtLjkzNSAzLjc0MiAzLjc0MiAwIDAxMS41OTgtLjM0Yy43MzcgMCAxLjM5NC4xNTggMS45NzIuNDc2YTMuMjIyIDMuMjIyIDAgMDExLjM0MyAxLjMyNmMuMzA2LS41NDQuNzQ4LS45OCAxLjMyNi0xLjMxYTMuODQ2IDMuODQ2IDAgMDExLjkwNC0uNDkyem04LjQ5NyAxLjQ5NmMuMzA2LS40MzEuNzI2LS43ODggMS4yNTktMS4wNzEuNTQ0LS4yOTUgMS4xNjEtLjQ0MiAxLjg1My0uNDQyQTQuMDc1IDQuMDc1IDAgMDE4MC4yOSAxNi40Yy4zODYuNzI1LjU3OSAxLjU3LjU3OSAyLjUzMyAwIC45NjMtLjE5MyAxLjgxOS0uNTc5IDIuNTY3LS4zNzMuNzM2LS44OSAxLjMwOS0xLjU0NiAxLjcxN2EzLjk5IDMuOTkgMCAwMS0yLjE3Ny42MTJjLS42OSAwLTEuMzAzLS4xNDItMS44MzUtLjQyNWEzLjk0OSAzLjk0OSAwIDAxLTEuMjc2LTEuMDcxdjUuODNoLTIuMzhWMTQuMjU5aDIuMzh2MS4zNnptNC45ODIgMy4zMTVjMC0uNTY3LS4xMi0xLjA1NC0uMzU3LTEuNDYyYTIuMzI2IDIuMzI2IDAgMDAtLjkxOC0uOTUyIDIuNDEgMi40MSAwIDAwLTEuMjI1LS4zMjNjLS40MyAwLS44MzguMTEzLTEuMjIzLjM0YTIuNDcgMi40NyAwIDAwLS45MTguOTUyYy0uMjI3LjQxOS0uMzQuOTEyLS4zNCAxLjQ3OSAwIC41NjYuMTEzIDEuMDYuMzQgMS40NzlhMi42IDIuNiAwIDAwLjkxOC45NjljLjM4NS4yMTUuNzkzLjMyMyAxLjIyNC4zMjMuNDQyIDAgLjg1LS4xMTQgMS4yMjQtLjM0LjM4NS0uMjI3LjY5LS41NS45MTgtLjk3LjIzOC0uNDE5LjM1Ny0uOTE3LjM1Ny0xLjQ5NXptNi41NC03LjgzN3YxMi41OGgtMi4zOHYtMTIuNThoMi4zOHptMTEuMTA2IDcuNjY3YzAgLjM0LS4wMjIuNjQ2LS4wNjguOTE4aC02Ljg4NWMuMDU3LjY4LjI5NSAxLjIxMi43MTQgMS41OTguNDIuMzg1LjkzNS41NzggMS41NDcuNTc4Ljg4NCAwIDEuNTEzLS4zOCAxLjg4Ny0xLjE0aDIuNTY3YTQuMzM0IDQuMzM0IDAgMDEtMS41NjQgMi4yNDVjLS43Ny41NzgtMS43MTcuODY3LTIuODM5Ljg2Ny0uOTA2IDAtMS43MjItLjE5OS0yLjQ0OC0uNTk1YTQuMzggNC4zOCAwIDAxLTEuNjgzLTEuNzE3Yy0uMzk2LS43MzctLjU5NS0xLjU4Ny0uNTk1LTIuNTUgMC0uOTc1LjE5OS0xLjgzLjU5NS0yLjU2N2E0LjE1MSA0LjE1MSAwIDAxMS42NjYtMS43Yy43MTQtLjM5NyAxLjUzNi0uNTk1IDIuNDY1LS41OTUuODk2IDAgMS42OTUuMTkyIDIuMzk3LjU3OGEzLjk4NyAzLjk4NyAwIDAxMS42NSAxLjY0OWMuMzk2LjcwMi41OTQgMS41MTMuNTk0IDIuNDN6bS0yLjQ2NS0uNjhjLS4wMS0uNjEyLS4yMzItMS4xLS42NjMtMS40NjItLjQzLS4zNzQtLjk1Ny0uNTYxLTEuNTgtLjU2MS0uNTkgMC0xLjA4OS4xODEtMS40OTcuNTQ0LS4zOTYuMzUxLS42NC44NDQtLjczIDEuNDc5aDQuNDd6IiBmaWxsPSIjZmZmIi8+PC9zdmc+"
+        alt="SimpleSwap logo" />
+    </div>
+    <div class="flex">
+      <div class="flex gap-5 text-white">
+        <p>How it Works</p>
+        <p>Loyalty Program</p>
+        <p>Lern</p>
+        <p>Blog</p>
+        <p class="border-r-[1px] border-solid border-r-green-200 pr-4">
+          Contacts
+        </p>
+        <p>Business</p>
+      </div>
+      <div class="flex gap-2 ml-8">
+        <button class="text-white bg-[#1eb15b] hover:bg-[#227420] px-5 py-1 rounded-md">
+          Log in
+        </button>
+        <button class="text-white bg-[#1aa153] hover:bg-[#227420] px-10 py-1 rounded-md">
+          Get an account
+        </button>
+      </div>
+    </div>
+  </div>
+  <div style="background-image: url(/Mediamodifier-Design\ \(8\).svg); background-size: cover; z-index: 0;"
+    class="relative p-4 pt-8 bg-[#2ecc71] w-full pb-48">
+    <div class="items-center justify-center text-center">
+      <div>
+        <p class="text-6xl text-white">Crypto Exchange</p>
+        <p class="mt-4 text-xl text-white">
+          Free from sign-up, limits, complications
+        </p>
+      </div>
+      <div class="flex items-center justify-center mt-5 text-center">
+        <div
+          class="flex items-center justify-center text-center bg-gray-300 cursor-pointer rounded-tl-3xl focus:bg-white">
+          <p class="px-[93px] py-6">Crypto Exchange</p>
         </div>
-
-        <div class="space-x-5">
-          <button>
-            <i class="text-lg text-gray-500 fas fa-bell"></i>
-          </button>
-          <button>
-            <i class="text-lg text-gray-500 fas fa-user"></i>
-          </button>
+        <div
+          class="items-center justify-center text-center bg-gray-300 cursor-pointer focus:bg-white focus:text-white rounded-tr-3xl">
+          <p class="px-[93px] py-6">Buy/Sell Crypto</p>
         </div>
       </div>
-
-      <div class="flex flex-1">
-        <div class="flex flex-col hidden p-2 bg-white w-60 md:flex" id="sideNav">
-          <nav>
-            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
-              href="#">
-              <i class="mr-2 fas fa-home"></i>Inicio
-            </a>
-            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
-              href="#">
-              <i class="mr-2 fas fa-file-alt"></i>Autorizaciones
-            </a>
-            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
-              href="#">
-              <i class="mr-2 fas fa-users"></i>Usuarios
-            </a>
-            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
-              href="#">
-              <i class="mr-2 fas fa-store"></i>Comercios
-            </a>
-            <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white"
-              href="#">
-              <i class="mr-2 fas fa-exchange-alt"></i>Transacciones
-            </a>
-          </nav>
-
-          <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white mt-auto"
-            href="#">
-            <i class="mr-2 fas fa-sign-out-alt"></i>Comercios
-          </a>
-          <div class="h-px mt-2 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
-          <p class="px-5 py-3 mb-1 text-xs text-left text-cyan-500">chack me</p>
-
-        </div>
-        <div class="flex-1 p-4">
-          <div class="relative w-full max-w-md">
-            <div class="absolute inline-flex items-center p-2 top-1 left-2">
-              <i class="text-gray-400 fas fa-search"></i>
-            </div>
+      <div class="flex items-center justify-center px-5 text-center">
+        <div class="p-5 bg-white w-[600px] rounded-br-3xl rounded-bl-3xl">
+          <div class="flex items-center justify-center gap-[2px] text-center">
             <input
-              class="w-full h-10 py-1 pl-10 pr-4 text-base placeholder-gray-500 border rounded-full focus:shadow-outline"
-              type="search" placeholder="Search...">
+              class="py-[18px] bg-gray-200 hover:bg-gray-300 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2"
+              type="text" placeholder="You send" />
+            <div class="flex gap-3 px-4 py-[14px] bg-gray-200 rounded-tr-lg rounded-br-lg">
+              <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+                <svg class="" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                  <path
+                    d="M310.204 242.638c27.73-14.18 45.377-39.39 41.28-81.3-5.358-57.351-52.458-76.573-114.85-81.929V0h-48.528v77.203c-12.605 0-25.525.315-38.444.63V0h-48.528v79.409c-17.842.539-38.622.276-97.37 0v51.678c38.314-.678 58.417-3.14 63.023 21.427v217.429c-2.925 19.492-18.524 16.685-53.255 16.071L3.765 443.68c88.481 0 97.37.315 97.37.315V512h48.528v-67.06c13.234.315 26.154.315 38.444.315V512h48.528v-68.005c81.299-4.412 135.647-24.894 142.895-101.467 5.671-61.446-23.32-88.862-69.326-99.89zM150.608 134.553c27.415 0 113.126-8.507 113.126 48.528 0 54.515-85.71 48.212-113.126 48.212v-96.74zm0 251.776V279.821c32.772 0 133.127-9.138 133.127 53.255-.001 60.186-100.355 53.253-133.127 53.253z" />
+                </svg>
+              </div>
+              <span class="mt-1 text-lg">BTC</span>
+            </div>
           </div>
-          <div class="grid grid-cols-1 gap-4 p-2 mt-2 md:grid-cols-2">
-            <div class="p-4 bg-white rounded-md">
-              <h2 class="pb-1 text-lg font-semibold text-gray-500">Usuarios</h2>
-              <div class="my1-"></div>
-              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
-              <div class="chart-container" style="position: relative; height:150px; width:100%">
-
-                <canvas id="usersChart"></canvas>
+          <div class="flex items-center justify-center gap-[2px] text-center mt-8">
+            <input class="py-[18px] bg-gray-200 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2" type="text"
+              placeholder="You send" />
+            <div class="flex gap-3 px-4 py-[14px] bg-gray-200 hover:bg-gray-300 rounded-tr-lg rounded-br-lg">
+              <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                  <path
+                    d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z" />
+                </svg>
               </div>
+              <span class="mt-1 text-lg">BTC</span>
             </div>
-            <div class="p-4 bg-white rounded-md">
-              <h2 class="pb-1 text-lg font-semibold text-gray-500">Comercios</h2>
-              <div class="my-1"></div>
-              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
-              <div class="chart-container" style="position: relative; height:150px; width:100%">
-
-                <canvas id="commercesChart"></canvas>
-              </div>
-            </div>
-            <div class="p-4 bg-white rounded-md">
-              <h2 class="pb-4 text-lg font-semibold text-gray-500">chack me</h2>
-              <div class="my-1"></div>
-              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
-              <table class="w-full text-sm table-auto">
-                <thead>
-                  <tr class="text-sm leading-normal">
-                    <th
-                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Foto</th>
-                    <th
-                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Nombre</th>
-                    <th
-                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Rol</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light"><img src="https://via.placeholder.com/40"
-                        alt="Foto Perfil" class="w-10 h-10 rounded-full"></td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="mt-4 text-right">
-                <button class="px-4 py-2 font-semibold text-white rounded bg-cyan-500 hover:bg-cyan-600">
-                  chack me
-                </button>
-              </div>
-            </div>
-            <div class="p-4 mt-4 bg-white rounded-md">
-              <h2 class="pb-4 text-lg font-semibold text-gray-500">Transacciones</h2>
-              <div class="my-1"></div>
-              <div class="h-px mb-6 bg-gradient-to-r from-cyan-300 to-cyan-500"></div>
-              <table class="w-full text-sm table-auto">
-                <thead>
-                  <tr class="text-sm leading-normal">
-                    <th
-                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Nombre</th>
-                    <th
-                      class="px-4 py-2 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Fecha</th>
-                    <th
-                      class="px-4 py-2 text-sm font-bold text-right uppercase border-b bg-grey-lightest text-grey-light border-grey-light">
-                      Monto</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">27/07/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$1500</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">28/07/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$2000</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">29/07/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$1800</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">30/07/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$2100</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">31/07/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$1700</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">01/08/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$2400</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">02/08/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$1950</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">03/08/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$1850</td>
-                  </tr>
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="px-4 py-2 border-b border-grey-light">chack me</td>
-                    <td class="px-4 py-2 border-b border-grey-light">04/08/2023</td>
-                    <td class="px-4 py-2 text-right border-b border-grey-light">$2300</td>
-                  </tr>
-
-                </tbody>
-              </table>
-              <div class="mt-4 text-right">
-                <button class="px-4 py-2 font-semibold text-white rounded bg-cyan-500 hover:bg-cyan-600">
-                  chack me
-                </button>
-              </div>
+          </div>
+          <div class="px-7">
+            <div class="py-4 bg-[#2ecc71] hover:bg-[#30a33f] mt-4 rounded-lg">
+              <button class="text-white">Exchange</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="flex items-center justify-center">
+      <div class="flex items-center justify-center mt-5 w-[600px] bg-green-500 rounded-3xl p-2 gap-3">
+        <div>
+          <img class="w-60" src="/78.png" alt="" />
+        </div>
+        <div class="pr-2 text-white">
+          <p class="mt-2 font-bold">
+            1,000 SWAP to all registered customers!
+          </p>
+          <p class="mt-2">
+            Create an account, finish the exchange and receive a pleasant
+            Bonus. Collect SWAP to purchase a BTC cashback subscription.
+          </p>
+          <p class="flex gap-2 mt-2 text-green-700 transition-opacity hover:text-green-900">
+            Sign-up
+            <svg class="mt-[6px]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+            </svg>
+          </p>
+        </div>
+      </div>
     </div>
-
-  </body>
-  <script src="java.js"></script>
+    <div>
+      <div
+        class="z-0 grid items-center justify-center grid-cols-1 sm:grid-cols-1 md:grid-cols-1 md:ml-44 lg:flex gap-7">
+        <div class="flex w-[600px] p-0">
+          <div class="flex px-8 py-8 pt-8 bg-green-600 shadow-md mt-14 rounded-3xl">
+            <div class="text-white">
+              <span>Privacy</span>
+              <p class="mt-10 text-xl font-bold">Sign-up is not required</p>
+              <p class="mt-3">
+                SimpleSwap provides cryptocurrency exchange without
+                registration.
+              </p>
+            </div>
+            <img class="w-40" src="/89.png" alt="" />
+          </div>
+        </div>
+        <div class="w-[600px] p-0 mt-0 sm:mt-0 md:m-2 lg:mt-10">
+          <div class="flex px-8 py-8 pt-8 mt-0 bg-green-600 shadow-md sm:mt-0 md:mt-2 lg:mt-14 rounded-3xl">
+            <div class="text-white">
+              <span>Privacy</span>
+              <p class="mt-10 text-xl font-bold">Sign-up is not required</p>
+              <p class="mt-3">
+                SimpleSwap provides cryptocurrency exchange without
+                registration.
+              </p>
+            </div>
+            <img class="w-40" src="/88.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div
+        class="z-0 grid items-center justify-center grid-cols-1 sm:grid-cols-1 md:grid-cols-1 md:ml-44 lg:flex gap-7">
+        <div class="w-[600px]">
+          <div class="flex px-8 py-8 mt-8 bg-green-600 shadow-md sm:mt-20 md:mt-20 lg:mt-2 rounded-3xl">
+            <div class="text-white">
+              <span>Privacy</span>
+              <p class="mt-10 text-xl font-bold">Sign-up is not required</p>
+              <p class="mt-3">
+                SimpleSwap provides cryptocurrency exchange without
+                registration.
+              </p>
+            </div>
+            <img class="w-40" src="/87.png" alt="" />
+          </div>
+        </div>
+        <div class="flex w-[600px]">
+          <div class="flex px-8 py-8 mt-0 bg-green-600 shadow-md sm:mt-0 md:mt-2 lg:mt-14 rounded-3xl">
+            <div class="text-white">
+              <span>Privacy</span>
+              <p class="mt-10 text-xl font-bold">Sign-up is not required</p>
+              <p class="mt-3">
+                SimpleSwap provides cryptocurrency exchange without
+                registration.
+              </p>
+            </div>
+            <img class="w-40" src="/86.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="grid items-center justify-center grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-1 md:ml-16 lg:flex">
+        <div class="flex items-center justify-center">
+          <div class="block px-4 py-8 mt-10 text-center bg-white w-96 rounded-3xl">
+            <p class="text-xl">
+              Excellent
+            </p>
+            <div class="flex items-center justify-center gap-2 mt-3">
+              <img src="/download.svg" alt="">
+              <img src="/download.svg" alt="">
+              <img src="/download.svg" alt="">
+              <img src="/download.svg" alt="">
+              <img src="/download.svg" alt="">
+            </div>
+            <div class="mt-2 cursor-pointer">
+              <p>Based on <span class="font-bold text-green-800 underline">1500+ reviews</span></p>
+            </div>
+            <div class="flex items-center justify-center mt-3">
+              <img src="/download (1).svg" alt="">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="text-white w-[300px] ml-20 sm:ml-20 md:mr-0 md:ml-72 lg:ml-0">
+            <p class="text-2xl font-bold">Excellent rating based on our customer reviews</p>
+            <div class="flex gap-4">
+              <p class="mt-4 text-green-700 cursor-pointer hover:text-green-800">Read more on Trustpilot</p>
+              <svg class="mt-[21px]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute left-0 z-50 flex w-full mx-0 mt-16 text-center shadow-lg right-2 lg:mx-96 end-0 lg:w-fit">
+      <div class="flex flex-col w-full bg-white lg:w-fit lg:grid lg:grid-cols-4 lg:grid-rows-1 rounded-3xl">
+        <div class="flex-row items-center justify-between hidden gap-6 p-10 ml-16 sm:hidden lg:flex">
+          <img class="w-[30px] h-[30px] box-border translate-y-[-27px]" src="/download (2).svg" alt="">
+          <img class="w-[25px] h-[25px] box-border translate-y-[36px]" src="/download (3).svg" alt="">
+          <img class="w-[30px] h-[30px] box-border translate-y-[7px]" src="/download (4).svg" alt="">
+          <img class="w-[25px] h-[25px] box-border translate-y-[48px]" src="/download (5).svg" alt="">
+        </div>
+        <div class="flex flex-col items-center justify-center p-8 text-center lg:col-span-2">
+          <p class="text-[40px] font-normal leading-[48px] ">Start Swap Cryptocurrencies</p>
+          <div class="font-semibold text-gray-500 lg:w-64 lg:whitespace-pre-line whitespace-nowrap">
+            <p>Just make the first exchange to see how easy and profitable it is.</p>
+          </div>
+          <div class="flex flex-row items-center justify-between gap-6 p-10 ml-16 lg:hidden">
+            <img class="w-[30px] h-[30px] box-border translate-y-[-27px]" src="/download (2).svg" alt="">
+            <img class="w-[25px] h-[25px] box-border translate-y-[36px]" src="/download (3).svg" alt="">
+            <img class="w-[30px] h-[30px] box-border translate-y-[7px]" src="/download (4).svg" alt="">
+            <img class="w-[25px] h-[25px] box-border translate-y-[48px]" src="/download (5).svg" alt="">
+          </div>
+          <div class="mt-6">
+            <button class="bg-[#2ecc71] hover:bg-[#279454] text-white py-4 px-14 rounded-xl">Create am exchange</button>
+          </div>
+        </div>
+        <div class="flex-row items-center justify-between hidden gap-6 p-10 mr-16 sm:hidden lg:flex">
+          <img class="w-[25px] h-[25px] box-border translate-y-[18px]" src="/download (6).svg" alt="">
+          <img class="w-[30px] h-[30px] box-border translate-y-[46px]" src="/download (7).svg" alt="">
+          <img class="w-[25px] h-[25px] box-border translate-y-[-5px]" src="/download (8).svg" alt="">
+          <img class="w-[30px] h-[30px] box-border translate-y-[11px]" src="/download (9).svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="flex items-center justify-center text-center text-gray-500 mt-72">
+    <p class="font-bold">Publications</p>
+  </div>
+  <div class="flex items-center justify-center mt-2 text-center">
+    <p class="text-[40px] font-normal leading-[48px] pl-8">
+      Press About SimpleSwap
+    </p>
+  </div>
+  <div
+    class="grid items-center justify-center grid-cols-1 pl-20 mt-8 sm:pl-20 md:pl-80 sm:grid-cols-1 md:grid-cols-1 lg:flex lg:pl-0">
+    <div class="w-[330px] bg-[#f7f8fa] p-8 rounded-3xl shadow-lg mr-6">
+      <p class="font-bold">
+        Crypto-To-Fiat Exchanges
+      </p>
+      <p>
+        Customers have long appreciated the convenience of the fiat-to-crypto exchanges. But it is something new to the
+        affiliate partners of SimpleSwap. From now on, the API is accessible not only for cryptocurrency but also for
+        fiat swaps!
+      </p>
+      <img class="w-32 mt-2" src="/download.png" alt="">
+    </div>
+    <div class="w-[330px] bg-[#f7f8fa] p-8 rounded-3xl shadow-lg mr-6 mt-4 md:mt-4 sm:mt-4 lg:mt-0">
+      <p class="font-bold">
+        Crypto-To-Fiat Exchanges
+      </p>
+      <p>
+        Customers have long appreciated the convenience of the fiat-to-crypto exchanges. But it is something new to the
+        affiliate partners of SimpleSwap. From now on, the API is accessible not only for cryptocurrency but also for
+        fiat swaps!
+      </p>
+      <img class="w-32 mt-2" src="/download (1).png" alt="">
+    </div>
+    <div class="w-[330px] bg-[#f7f8fa] p-8 rounded-3xl shadow-lg mt-4 md:mt-4 sm:mt-4 lg:mt-0">
+      <p class="font-bold">
+        Crypto-To-Fiat Exchanges
+      </p>
+      <p>
+        Customers have long appreciated the convenience of the fiat-to-crypto exchanges. But it is something new to the
+        affiliate partners of SimpleSwap. From now on, the API is accessible not only for cryptocurrency but also for
+        fiat swaps!
+      </p>
+      <img class="w-32 mt-2" src="/cryptonewsz-211f2b8d1082b1977f4830b4aea90ef9.png" alt="">
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-4 px-16 py-4 mt-8 sm:grid-cols-2 md:grid-cols-4 lg:flex ">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (2).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (3).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (4).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (5).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (6).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (7).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (7).png" alt="">
+    <img class="border-solid border-[1px] rounded-lg w-52" src="/download (7).png" alt="">
+  </div>
+  <div style="z-index: 0;" class="bg-[#f7f8fa] pt-20 pl-32 sm:pl-32 md:pl-52 lg:pl-52 relative pb-56">
+    <div class="text-[#2ecc71] flex gap-3">
+      <p>Watch a video guide</p>
+      <div class="w-7 rounded-full h-7 bg-[#2ecc71] text-center items-center justify-center flex">
+        <svg class="mt-[1px] ml-[1px]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+          <path
+            d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
+        </svg>
+      </div>
+    </div>
+    <div>
+      <p class="text-[40px] font-normal leading-[48px] mt-4">
+        How it Works
+      </p>
+    </div>
+    <div>
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-2 lg:flex md:ml-0">
+        <div>
+          <div class="flex gap-3">
+            <img class="mt-5 bg-[#2ecc71] mb-7 w-14 h-14 p-2 rounded-2xl"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI4Ljc1IDE5Ljk2MmE4Ljc0NCA4Ljc0NCAwIDAxLTguNzUgOC43NWwxLjMxMy0yLjE4N00xLjI1IDkuOTYyQTguNzQ0IDguNzQ0IDAgMDExMCAxLjIxMkw4LjY4NyAzLjQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik04LjI3NSAxNi4zMzdoMy41MTNjLjc3NSAwIDEuNDEyLjcgMS40MTIgMS40MTNhMS40MSAxLjQxIDAgMDEtMS40MTIgMS40MTJIOC4yNzV2LTIuODI1em0wIDIuODI2SDEyLjNjLjg4OCAwIDEuNjEzLjYyNSAxLjYxMyAxLjQxMiAwIC43NzUtLjcyNSAxLjQxMy0xLjYxMyAxLjQxM0g4LjI3NXYtMi44MjV6bTIuMjUgMi44MTJ2MS40bTAtOC40Mzd2MS40IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xOC41NjMgMTkuMTYzYTcuNzA5IDcuNzA5IDAgMDEtNy43MTMgNy43MTIgNy43MDkgNy43MDkgMCAwMS03LjcxMi03LjcxMiA3LjcwOSA3LjcwOSAwIDAxNy43MTItNy43MTNjLjIgMCAuMzg4LjAxMy42LjAyNWE3LjcxOCA3LjcxOCAwIDAxNy4xIDcuMWMwIC4xODguMDEzLjM3NS4wMTMuNTg4eiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjYuODc1IDEwLjgzOGE3LjcwOSA3LjcwOSAwIDAxLTcuNzEyIDcuNzEyaC0uNjEzYTcuNzE4IDcuNzE4IDAgMDAtNy4xLTcuMXYtLjYxMmE3LjcwOSA3LjcwOSAwIDAxNy43MTMtNy43MTMgNy43MDkgNy43MDkgMCAwMTcuNzEyIDcuNzEzeiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4="
+              alt="">
+            <p class="text-[#2ecc71] mt-9">---------------------------</p>
+          </div>
+          <div>
+            <p class="font-bold">Choose a currency pair</p>
+            <p class="w-64 text-gray-600">Select currencies you want to swap and click the Exchange button.</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex gap-3">
+            <img class="mt-5 bg-[#2ecc71] mb-7 w-14 h-14 p-2 rounded-2xl" src="/download (10).svg" alt="">
+            <p class="text-[#2ecc71] mt-9">---------------------------</p>
+          </div>
+          <div>
+            <p class="font-bold">Choose a currency pair</p>
+            <p class="w-64 text-gray-600">Select currencies you want to swap and click the Exchange button.</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex gap-3">
+            <img class="mt-5 bg-[#2ecc71] mb-7 w-14 h-14 p-2 rounded-2xl" src="/download (11).svg" alt="">
+            <p class="text-[#2ecc71] mt-9">---------------------------</p>
+          </div>
+          <div>
+            <p class="font-bold">Choose a currency pair</p>
+            <p class="w-64 text-gray-600">Select currencies you want to swap and click the Exchange button.</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex gap-3">
+            <img class="mt-5 bg-[#2ecc71] mb-7 w-14 h-14 p-2 rounded-2xl" src="/download (12).svg" alt="">
+          </div>
+          <div>
+            <p class="font-bold">Choose a currency pair</p>
+            <p class="w-64 text-gray-600">Select currencies you want to swap and click the Exchange button.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="z-index: 50;"
+    class="absolute grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 items-center justify-center ml-[220px] text-center -mt-28 sm:hidden md:hidden lg:flex">
+    <div class="hidden grid-cols-1 gap-4 p-5 mt-16 bg-white rounded-3xl sm:grid-cols-1 md:grid-cols-2 lg:flex">
+      <div class="flex items-center justify-center gap-[2px] text-center">
+        <input class="py-[18px] bg-gray-200 hover:bg-gray-300 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2"
+          type="text" placeholder="You send" />
+        <div class="flex gap-3 px-4 py-[14px] bg-gray-200 rounded-tr-lg rounded-br-lg">
+          <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+            <svg class="" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+              <path
+                d="M310.204 242.638c27.73-14.18 45.377-39.39 41.28-81.3-5.358-57.351-52.458-76.573-114.85-81.929V0h-48.528v77.203c-12.605 0-25.525.315-38.444.63V0h-48.528v79.409c-17.842.539-38.622.276-97.37 0v51.678c38.314-.678 58.417-3.14 63.023 21.427v217.429c-2.925 19.492-18.524 16.685-53.255 16.071L3.765 443.68c88.481 0 97.37.315 97.37.315V512h48.528v-67.06c13.234.315 26.154.315 38.444.315V512h48.528v-68.005c81.299-4.412 135.647-24.894 142.895-101.467 5.671-61.446-23.32-88.862-69.326-99.89zM150.608 134.553c27.415 0 113.126-8.507 113.126 48.528 0 54.515-85.71 48.212-113.126 48.212v-96.74zm0 251.776V279.821c32.772 0 133.127-9.138 133.127 53.255-.001 60.186-100.355 53.253-133.127 53.253z" />
+            </svg>
+          </div>
+          <span class="mt-1 text-lg">BTC</span>
+        </div>
+      </div>
+      <svg class="w-10 h-10 p-2 mt-3 bg-gray-300 rounded-xl" xmlns="http://www.w3.org/2000/svg" height="1em"
+        viewBox="0 0 512 512">
+        <path
+          d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z" />
+      </svg>
+      <div class="flex items-center justify-center gap-[2px] text-center">
+        <input class="py-[18px] bg-gray-200 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2" type="text"
+          placeholder="You send" />
+        <div class="flex gap-3 px-4 py-[14px] bg-gray-200 hover:bg-gray-300 rounded-tr-lg rounded-br-lg">
+          <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+              <path
+                d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z" />
+            </svg>
+          </div>
+          <span class="mt-1 text-lg">BTC</span>
+        </div>
+      </div>
+      <div class="px-7">
+        <div class="py-4 bg-[#2ecc71] hover:bg-[#227420] mt-0 rounded-lg w-96">
+          <button class="text-white">Exchange</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative left-0 right-0 z-50 flex items-center justify-center px-24 -mt-48 -mb-20 text-center lg:hidden">
+    <div class="p-5 bg-white w-[600px] rounded-br-3xl rounded-bl-3xl">
+      <div class="flex items-center justify-center gap-[2px] text-center">
+        <input class="py-[18px] bg-gray-200 hover:bg-gray-300 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2"
+          type="text" placeholder="You send" />
+        <div class="flex gap-3 px-4 py-[14px] bg-gray-200 rounded-tr-lg rounded-br-lg">
+          <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+            <svg class="" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+              <path
+                d="M310.204 242.638c27.73-14.18 45.377-39.39 41.28-81.3-5.358-57.351-52.458-76.573-114.85-81.929V0h-48.528v77.203c-12.605 0-25.525.315-38.444.63V0h-48.528v79.409c-17.842.539-38.622.276-97.37 0v51.678c38.314-.678 58.417-3.14 63.023 21.427v217.429c-2.925 19.492-18.524 16.685-53.255 16.071L3.765 443.68c88.481 0 97.37.315 97.37.315V512h48.528v-67.06c13.234.315 26.154.315 38.444.315V512h48.528v-68.005c81.299-4.412 135.647-24.894 142.895-101.467 5.671-61.446-23.32-88.862-69.326-99.89zM150.608 134.553c27.415 0 113.126-8.507 113.126 48.528 0 54.515-85.71 48.212-113.126 48.212v-96.74zm0 251.776V279.821c32.772 0 133.127-9.138 133.127 53.255-.001 60.186-100.355 53.253-133.127 53.253z" />
+            </svg>
+          </div>
+          <span class="mt-1 text-lg">BTC</span>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-[2px] text-center mt-8">
+        <input class="py-[18px] bg-gray-200 rounded-tl-lg rounded-bl-lg outline-none w-[400px] pl-2" type="text"
+          placeholder="You send" />
+        <div class="flex gap-3 px-4 py-[14px] bg-gray-200 hover:bg-gray-300 rounded-tr-lg rounded-br-lg">
+          <div class="flex items-center justify-center w-6 h-6 p-1 mt-2 text-center rounded-full bg-amber-500">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+              <path
+                d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z" />
+            </svg>
+          </div>
+          <span class="mt-1 text-lg">BTC</span>
+        </div>
+      </div>
+      <div class="px-7">
+        <div class="py-4 bg-[#2ecc71] hover:bg-[#30a33f] mt-4 rounded-lg">
+          <button class="text-white">Exchange</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="bg-[#158041] pt-20 lg:gap-6 items-center flex flex-col justify-center text-center md:flex md:order lg:px-10">
+    <div class="order-2 w-full">
+      <div class="flex bg-[#1c9222] w-full h-14 rounded-lg">
+        <img class="py-1 mx-auto" src="/download (13).svg" alt="">
+      </div>
+      <div class="flex my-2 bg-[#1c9222] w-full h-14 rounded-lg">
+        <img class="py-1 mx-auto" src="/download (14).svg" alt="">
+      </div>
+      <div class="flex bg-[#1c9222] w-full h-14 rounded-lg">
+        <img class="py-1 mx-auto" src="/download (15).svg" alt="">
+      </div>
+    </div>
+    <div class="flex gap-4 py-4 text-white">
+      <p>Buy & sell crypto</p>
+      <img class="w-[27px] h-[18px] mt-1" src="/download (16).svg" alt="">
+    </div>
+    <div class="hidden lg:flex gap-10 px-2 rounded-lg text-white bg-[#1c9222] py-2">
+      <p>English</p>
+      <div class="flex gap-4">
+        <img src="/download (17).svg" alt="">
+        <img class="-rotate-90 w-[6px] h-[10px] mt-2" src="/download (18).svg" alt="">
+      </div>
+    </div>
+  </div>
+  <hr class="hidden border-gray-400 lg:block">
+  <div class="bg-[#158041] pt-20">
+    <div>
+      <div class="flex items-center justify-center gap-2 text-center text-white text">
+        <p>See our <span class="font-bold">1,548</span> reviews on <span class="h-4">|</span></p>
+        <img src="/download (19).svg" alt="">
+        <input class="bg-[#158041] text-white outline-none ml-[600px] border-b-[1px] sm:ml-[300px]" type="text"
+          value="Track Exchange ID">
+      </div>
+    </div>
+    <div>
+      <div class="grid justify-center grid-cols-2 p-8 px-10 text-white lg:gap-24 sm:grid-cols-2 md:grid-cols-4 lg:flex">
+        <div>
+          <p class="font-bold text-[#5fff6d]">Company & Team</p>
+          <p>About</p>
+          <p>FAQ</p>
+          <p>How it Works</p>
+          <p>Exchange Examples</p>
+          <p>Blog</p>
+          <p>Mobile App</p>
+          <p>Reviews</p>
+        </div>
+        <div>
+          <p class="font-bold text-[#5fff6d]">Exchange Pairs</p>
+          <p>ETH to BTC</p>
+          <p>BTC to ETH</p>
+          <p>BTC to XMR</p>
+          <p>Exchange Examples</p>
+          <p>BTC to TRX</p>
+          <p>ETH to SOL</p>
+          <p>ETH to BNB</p>
+          <p>BTC to BNB</p>
+          <p>BTC to USDT</p>
+          <p>SOL to NEAR</p>
+          <p>Buy and Sell Crypto</p>
+          <p>Crypto Pairs</p>
+        </div>
+        <div>
+          <p class="font-bold text-[#5fff6d]">Supported Coins</p>
+          <p>Bitcoin</p>
+          <p>Ethereum</p>
+          <p>Tezos</p>
+          <p>Monero</p>
+          <p>Cardano</p>
+          <p>Solana</p>
+          <p>Binance Coin</p>
+        </div>
+        <div>
+          <p class="font-bold text-[#5fff6d]">Partnership</p>
+          <p>Affiliate-Programm</p>
+          <p>Entwicklungs-API</p>
+          <p>How it Works</p>
+          <p>Tether (USDT) Swap</p>
+          <p>Botschafter</p>
+        </div>
+        <div>
+          <p class="font-bold text-[#5fff6d]">Legal Documents</p>
+          <p>About</p>
+          <p>FAQ</p>
+          <p>How it Works</p>
+          <p>Exchange Examples</p>
+          <p>Blog</p>
+          <p>Mobile App</p>
+          <p>Reviews</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src=" java.js"></script>
 
 </html>
